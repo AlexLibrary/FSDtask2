@@ -1,0 +1,22 @@
+.form-text-field {
+  width: 320px;
+  height: 44px;
+  padding: 15px 13px;
+
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  border-radius: 4px;
+}
+
+.form-text-field::placeholder {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+
+  color: rgba(31, 32, 65, 0.25);
+}
+
+.form-text-field:hover,
+.form-text-field:focus {
+  border: 1px solid rgba(31, 32, 65, 0.5);
+}

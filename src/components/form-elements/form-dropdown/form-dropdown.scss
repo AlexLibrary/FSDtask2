@@ -1,0 +1,15 @@
+.form-dropdown {
+  width: 320px;
+  height: 44px;
+  padding: 11px 13px;
+
+  background-color: #fff;
+  color: rgba(31, 32, 65, 0.75);
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  border-radius: 4px;
+}
+
+.form-dropdown:hover,
+.form-dropdown:focus {
+  border: 1px solid rgba(31, 32, 65, 0.5);
+}
