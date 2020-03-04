@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require("fs");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-//const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
@@ -54,7 +54,7 @@ module.exports = {
         exclude: '/node_modules/'
       }, {
         // Fonts
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot|otf|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'
@@ -93,6 +93,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[contenthash].css`
     }),
+    new CopyWebpackPlugin([
+      { from: `${PATHS.src}/fonts`, to: `${PATHS.assets}fonts` },
+    ]),
     ...PAGES.map(
       page =>
         new HtmlWebpackPlugin({
