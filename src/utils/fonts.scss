@@ -1,0 +1,14 @@
+@import "mixins";
+
+@include font-face("Montserrat", "fonts/Montserrat/Montserrat-Regular", 400);
+@include font-face("Montserrat", "fonts/Montserrat/Montserrat-Bold", 700);
+@include font-face("Quicksand", "fonts/Quicksand/Quicksand-Bold", 700);
+
+// @font-face {
+//   font-family: "Montserrat";
+//   //src: url('/assets/fonts/Montserrat/Montserrat-Regular.eot'); // IE9 Compat Modes
+//   src: //url('/assets/fonts/Montserrat/Montserrat-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
+//         //url('/assets/fonts/Montserrat/Montserrat-Regular.woff') format('woff'), // Pretty Modern Browsers
+//         url('/assets/fonts/Montserrat/Montserrat-Regular.ttf')  format('truetype'), // Safari, Android, iOS
+//         //url('/assets/fonts/Montserrat/Montserrat-Regular.svg') format('svg'); // Legacy iOS
+// }
