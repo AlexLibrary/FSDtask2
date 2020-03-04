@@ -1,0 +1,36 @@
+// colors
+$dark-shade100p          : #1f2041;
+$dark-shade75p           : rgba(#1f2041, .75);
+$dark-shade50p           : rgba(#1f2041, .5);
+$dark-shade25p           : rgba(#1f2041, .25);
+$dark-shade5p            : rgba(#1f2041, .05);
+$purple                  : #bc9cff;
+$green                   : #6fcf97;
+
+// type text
+h1 {
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.25;
+}
+h2 {
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.25;
+}
+h3 {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+body {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+}
