@@ -1,8 +1,8 @@
 @import "mixins";
 
-@include font-face("Montserrat", "fonts/Montserrat/Montserrat-Regular", 400);
-@include font-face("Montserrat", "fonts/Montserrat/Montserrat-Bold", 700);
-@include font-face("Quicksand", "fonts/Quicksand/Quicksand-Bold", 700);
+@include font-face("Montserrat", "/assets/fonts/Montserrat/Montserrat-Regular", 400);
+@include font-face("Montserrat", "/assets/fonts/Montserrat/Montserrat-Bold", 700);
+@include font-face("Quicksand", "/assets/fonts/Quicksand/Quicksand-Bold", 700);
 
 // @font-face {
 //   font-family: "Montserrat";
