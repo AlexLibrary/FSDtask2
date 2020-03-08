@@ -1,3 +1,7 @@
 mixin form-dropdown(options)
-  select(class="form-dropdown")
-    option(value="volvo") Cколько гостей
+  .form-dropdown
+    .select Сколько гостей
+    .options
+      - for (var i = 0; i < 10; i++)
+        .item= i
+    .arrow
