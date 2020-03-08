@@ -15,3 +15,9 @@
       url("#{$file-path}.ttf") format("truetype");
   }
 }
+
+@mixin desktop {
+  @media (min-width: #{$desktopWidth}) {
+    @content;
+  }
+}
