@@ -1,15 +1,75 @@
 .form-dropdown {
   width: 320px;
-  height: 44px;
-  padding: 11px 13px;
+  position: relative;
 
-  background-color: #fff;
-  color: rgba(31, 32, 65, 0.75);
-  border: 1px solid rgba(31, 32, 65, 0.25);
-  border-radius: 4px;
+  .select {
+    width: 100%;
+    height: 44px;
+    padding: 11px 13px;
+
+    background-color: #fff;
+    color: rgba(31, 32, 65, 0.75);
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover,
+    &.active {
+      border: 1px solid rgba(31, 32, 65, 0.5);
+    }
+    &.active {
+      border-bottom-color: transparent;
+      border-radius: 4px 4px 0 0;
+    }
+    &.active ~ .arrow {
+      top: 20px;
+      transform: rotate(-135deg);
+    }
+    &.active ~ .options {
+      display: block;
+    }
+  }
+
+  .options {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    z-index: 100;
+
+    width: 320px;
+
+    background-color: white;
+    border: 1px solid rgba(31, 32, 65, 0.5);
+    border-top: 0;
+    display: none;
+
+    cursor: pointer;
+
+    .item {
+      padding: 11px 13px;
+      &:hover {
+        background-color: rgba(31, 32, 65, 0.05);
+      }
+    }
+
+  }
+
+  .arrow {
+    position: absolute;
+    top: 15px;
+    right: 19px;
+    z-index: 1;
+
+    transform: rotate(45deg);
+
+    width: 9px;
+    height: 9px;
+
+    border-bottom: 2px solid #8f8fa0;
+    border-right: 2px solid #8f8fa0;
+  }
+
 }
 
-.form-dropdown:hover,
-.form-dropdown:focus {
-  border: 1px solid rgba(31, 32, 65, 0.5);
-}
+
+
