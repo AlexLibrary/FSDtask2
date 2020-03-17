@@ -1,14 +1,49 @@
 .form-date-dropdown {
-  width: 320px;
-  height: 44px;
-  padding: 15px 13px;
+  width: 150px;
+  position: relative;
   color: $dark-shade75p;
 
-  border: 1px solid $dark-shade25p;
-  border-radius: 4px;
+  .select {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    padding: 11px 13px;
 
-  &:hover,
-  &:focus {
-    border: 1px solid $dark-shade50p;
+    background-color: transparent;
+    color: $dark-shade75p;
+    border: 1px solid $dark-shade25p;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 2;
+
+    &:hover,
+    &.active {
+      border: 1px solid $dark-shade50p;
+    }
+    &.active {
+      border-bottom-color: transparent;
+      border-radius: 4px 4px 0 0;
+    }
+    &.active ~ .arrow {
+      top: 20px;
+      transform: rotate(-135deg);
+    }
+
   }
+
+  .arrow {
+    position: absolute;
+    top: 15px;
+    right: 19px;
+    z-index: 1;
+
+    transform: rotate(45deg);
+
+    width: 9px;
+    height: 9px;
+
+    border-bottom: 2px solid $dark-shade50p;
+    border-right: 2px solid $dark-shade50p;
+  }
+
 }
