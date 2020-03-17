@@ -1,6 +1,7 @@
 .form-dropdown {
   width: 320px;
   position: relative;
+  color: $dark-shade75p;
 
   .select {
     position: relative;
@@ -29,6 +30,7 @@
     }
     &.active ~ .options {
       display: block;
+      border-radius: 0 0 4px 4px;
     }
   }
 
