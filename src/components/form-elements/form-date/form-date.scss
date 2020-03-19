@@ -2,7 +2,7 @@ $partOfArrow: ((12px*0.52532198881)/2)+((2px*0.52532198881)/2);
 
 .form-date {
   width: 320px;
-  height: 369px;
+  min-height: 369px;
 
   color: $dark-shade75p;
   border: 1px solid $dark-shade25p;
@@ -67,12 +67,28 @@ $partOfArrow: ((12px*0.52532198881)/2)+((2px*0.52532198881)/2);
     flex-wrap: wrap;
     margin: 30px 20px 0 20px;
     // border: 1px solid #000;
-    .content__item {
+    .content__weakday {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 39.7px;
       height: 40px;
+
+      font-weight: 700;
+      color: $purple;
+    }
+    .content__day {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 39.7px;
+      height: 40px;
+      &.lastMonth{
+        color: $dark-shade25p;
+      }
+      &.nextMonth{
+        color: $dark-shade25p;
+      }
     }
   }
 }
