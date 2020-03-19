@@ -1,5 +1,4 @@
 {
-  'use strict';
   // variables
   const TargetEl = document.querySelector('.form-dropdown');
   const Select = TargetEl.querySelector('.select');

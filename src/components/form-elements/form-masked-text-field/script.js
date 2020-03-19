@@ -1,5 +1,4 @@
 {
-  'use strict';
   const DATEMASK = 'ДД.ММ.ГГГГ';
   document.addEventListener('DOMContentLoaded', () => {
     // Function
