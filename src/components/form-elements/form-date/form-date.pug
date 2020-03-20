@@ -1,12 +1,17 @@
 mixin form-date(options)
   .form-date
     .header
-      .header__arrow.header__arrow--left
+      .header__arrow-box
+        .header__arrow.header__arrow--left
       .header__text
-      .header__arrow.header__arrow--right
+      .header__arrow-box
+        .header__arrow.header__arrow--right
     .content
       each day in ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
         .content__weakday= day
       - for (var i = 1; i < 43; ++i)
         .content__day= i
+    .footer
+      .clear очистить
+      .accept применить
 
