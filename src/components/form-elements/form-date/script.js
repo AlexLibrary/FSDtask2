@@ -2,7 +2,7 @@
   const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
   const date = new Date();
   // date.setFullYear(2020);
-  // date.setMonth(1);
+  date.setMonth(7);
   const nowYear = date.getFullYear();
   const nowMonth = date.getMonth();
   const nowWeekday = date.getDay();
@@ -39,10 +39,12 @@
       }
     }
     // Delete last weak
-    // if (firstWeakdayOfMonth + lastDayOfMonth > 35) {
-    //   var parent = document.querySelector('.form-date .content');
-    //   parent.removeChild(parent.lastElementChild);
-    // }
+    if (firstWeakdayOfMonth + lastDayOfMonth < 36) {
+      var parent = document.querySelector('.form-date .content');
+      for (let i = 0; i < 7; i++) {
+        parent.removeChild(parent.lastElementChild);
+      }
+    }
   }
 
   /* Usage */
