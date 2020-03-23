@@ -8,6 +8,8 @@ $partOfArrow: ((12px*0.52532198881)/2)+((2px*0.52532198881)/2);
   color: $dark-shade75p;
   border: 1px solid $dark-shade25p;
   border-radius: 4px;
+
+  font-size: 12px;
   .header {
     display: flex;
     flex-direction: row;
@@ -100,7 +102,10 @@ $partOfArrow: ((12px*0.52532198881)/2)+((2px*0.52532198881)/2);
         color: $dark-shade25p;
       }
       &.actualDay {
-        color: red;
+        background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+        border-radius: 50%;
+        color: #fff;
+        font-weight: 700;
       }
     }
   }

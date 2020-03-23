@@ -1,94 +1,99 @@
 {
   /* Functions */
-  const setDaysOnDate = (month = 0, year = 1970) => {
-    /* Variables */
-    const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-    const date = new Date();
-    // Set date
-    date.setFullYear(year, month);
-    const nowYear = date.getFullYear();
-    const nowMonth = date.getMonth();
-    // const nowWeekday = date.getDay();
-    const nowDay = date.getDate();
-    /* Functions */
-    const getDay = (day = nowDay, month = nowMonth, year = nowYear) =>
-      new Date(year, month, day).getDate();
 
-    const getWeakday = (day = nowDay, month = nowMonth, year = nowYear) =>
-      new Date(year, month, day).getDay();
-    /* Usage */
-    // Set name of month
-    const nameMonth = document.querySelector('.form-date .header__text');
-    nameMonth.textContent = months[nowMonth] + ' ' + nowYear;
-    // Set days
-    const firstWeakdayOfMonth = getWeakday(0);
-    const lastDayOfMonth = getDay(0, nowMonth + 1);
-    const items = document.querySelectorAll('.form-date .content__day');
-    let j = 1;
-    let k = 1;
-    for (let i = 0; i < items.length; i++) {
-      let dayOfLastMonth = getDay(i - getWeakday(0) + 1);
-      const item = items[i];
-      if (i < firstWeakdayOfMonth) {
-        item.textContent = dayOfLastMonth;
-        item.classList.add('lastMonth');
-      } else if (j <= lastDayOfMonth) {
-        item.textContent = j++;
-      } else {
-        item.classList.add('nextMonth');
-        item.textContent = k++;
-      }
-    }
-    // delete last weak
-    // const totalElementsOfCalendar = document.querySelectorAll('.form-date .content__day').length; (? && totalElementsOfCalendar === 42)
-    if (firstWeakdayOfMonth + lastDayOfMonth < 36) {
-      var parent = document.querySelector('.form-date .content');
+  const getDayElements = () => document.querySelectorAll('.form-date .content__day');
+  const getAmountDayElements = () => getDayElements().length;
+  const getMonthElement = () => document.querySelector('.form-date .header__text');
+  const getFirstWeakdayThisMonth = date => new Date(date.getFullYear(), date.getMonth(), 0).getDay();
+  const getLastDayThisMonth = date => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  const setMonthInHtml = date => {
+    const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    const monthEl = getMonthElement();
+    monthEl.textContent = months[month] + ' ' + year;
+  }
+  const setNextMonth = date => {
+    date.setFullYear(date.getFullYear(), date.getMonth() + 1, date.getDate());
+  }
+  const setLastMonth = date => {
+    date.setFullYear(date.getFullYear(), date.getMonth() - 1, date.getDate());
+  }
+  const setActualMonth = date => {
+    d = new Date();
+    date.setFullYear(d.getFullYear(), d.getMonth(), d.getDate());
+  }
+  const toggleLastWeak = date => {
+    const firstWeakday = getFirstWeakdayThisMonth(date);
+    const daysInMonth = 33 - new Date(date.getFullYear(), date.getMonth(), 33).getDate()
+    const needElements = firstWeakday + daysInMonth;
+    const amountElements = getAmountDayElements();
+    const parent = document.querySelector('.form-date .content');
+    if (amountElements === 42 && needElements < 35) {
       for (let i = 0; i < 7; i++) {
         parent.removeChild(parent.lastElementChild);
       }
-    }
-    // Set style .actualDay
-    const actualDate = new Date();
-    if (date.getMonth() === actualDate.getMonth() && date.getFullYear() === actualDate.getFullYear()) {
-      const days = document.querySelectorAll('.form-date .content__day');
-      days[firstWeakdayOfMonth + actualDate.getDate() - 1].classList.add('actualDay');
+    } else if (amountElements === 35 && needElements > 35) {
+      for (let i = 0; i < 7; i++) {
+        const div = document.createElement('div');
+        div.classList.value = 'content__day';
+        div.textContent = '1';
+        parent.appendChild(div);
+      }
     }
   }
-  const changeMonthOfCalendar = () => {
 
+  const setDaysInHTML = date => {
+
+    const days = getDayElements();
+    const firstWeakday = getFirstWeakdayThisMonth(date);
+    const thisDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const actualDate = new Date();
+
+    date.setFullYear(date.getFullYear(), date.getMonth(), 1);
+    date.setFullYear(date.getFullYear(), date.getMonth(), date.getDate() - firstWeakday);
+
+    for (const day of days) {
+      // console.log(thisDate);
+      day.classList.value = 'content__day'; // обнуляю класс элемента
+      day.textContent = date.getDate();
+      if (date.getMonth() === (thisDate.getMonth() - 1 === -1 ? 11 : thisDate.getMonth() - 1)) day.classList.add('lastMonth');
+      if (date.getMonth() === (thisDate.getMonth() + 1 === 12 ? 0 : thisDate.getMonth() + 1)) day.classList.add('nextMonth');
+      if (date.toDateString() === actualDate.toDateString()) day.classList.add('actualDay');
+
+      date.setFullYear(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+    }
+    date.setFullYear(thisDate.getFullYear(), thisDate.getMonth(), thisDate.getDate());
   }
-  /* Function Events */
-  const clickOnArrow = e => {
+
+  const clickOnArrow = date => e => {
     const element = e.target;
     let stringClass = element.classList.value;
-    // console.dir(stringClass.includes('right'));
-    // console.dir(element);
     if (stringClass.includes('box')) {
       stringClass = element.children[0].classList.value
     }
 
     if (stringClass.includes('right')) {
-      console.log('right')
-      // month++;
-      // setDaysOnDate(month, nowYear)
+      date.setFullYear(date.getFullYear(), date.getMonth() + 1, date.getDate());
+      toggleLastWeak(date);
+      setMonthInHtml(date);
+      setDaysInHTML(date);
     } else if (stringClass.includes('left')) {
-      console.log('left')
-      // month--;
-      // setDaysOnDate(month, nowYear)
+      date.setFullYear(date.getFullYear(), date.getMonth() - 1, date.getDate());
+      toggleLastWeak(date);
+      setMonthInHtml(date);
+      setDaysInHTML(date);
     }
   }
 
   /* Usage */
-  const date = new Date();
-  const nowYear = date.getFullYear();
-  const nowMonth = date.getMonth();
-  const nowDay = date.getDate();
-  let month = nowMonth;
-  let year = nowYear;
-  setDaysOnDate(nowMonth, nowYear); // default: month = 0, year = 1970
+  const DATE = new Date();
+  setMonthInHtml(DATE);
+  setDaysInHTML(DATE);
 
   document.querySelectorAll('.header__arrow-box').forEach(e => {
-    e.addEventListener('click', clickOnArrow);
+    e.addEventListener('click', clickOnArrow(DATE));
   });
+
 
 }
